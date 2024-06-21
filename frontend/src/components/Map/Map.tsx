@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {
-  GoogleMap,
-  LoadScript,
-  Marker,
-  OverlayView,
-} from "@react-google-maps/api";
+import { GoogleMap, useJsApiLoader, OverlayView } from "@react-google-maps/api";
+import { BicycleIcon, IconContainer, ExcersiseIcon } from "./Map.styled";
 
 const containerStyle = {
   width: "390px",
@@ -12,8 +8,13 @@ const containerStyle = {
 };
 
 const defaultCenter = {
-  lat: 52.2297,
-  lng: 21.0122,
+  lat: 54.3486938,
+  lng: 18.5990675,
+};
+
+const otherUserPosition = {
+  lat: 54.3497939,
+  lng: 18.5970676,
 };
 
 const mapStyles = [
@@ -32,6 +33,11 @@ const mapStyles = [
 export const MapComponent = () => {
   const [currentPosition, setCurrentPosition] = useState(defaultCenter);
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: `${apiKey}`,
+  });
 
   useEffect(() => {
     // Sprawdza, czy przeglądarka obsługuje API geolokalizacji
@@ -65,7 +71,7 @@ export const MapComponent = () => {
     }
   }, []);
 
-  return (
+  return isLoaded ? (
     <>
       <div
         style={{
@@ -77,50 +83,52 @@ export const MapComponent = () => {
           padding: "10px",
         }}
       >
-        <LoadScript googleMapsApiKey={apiKey}>
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={currentPosition}
-            zoom={15}
-            options={{ styles: mapStyles }}
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={currentPosition}
+          zoom={15}
+          options={{ styles: mapStyles }}
+        >
+          <OverlayView
+            position={currentPosition}
+            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
           >
-            <Marker />
-            <OverlayView
-              position={currentPosition}
-              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+            <div
+              style={{
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+              }}
             >
-              <div
-                style={{
-                  position: "relative",
-                  display: "flex",
-                  alignItems: "center",
-                }}
-              >
-                <div
-                  style={{
-                    backgroundColor: "red",
-                    borderRadius: "50%",
-                  }}
-                />
-                <div
-                  style={{
-                    background: "orange",
-                    width: "10px",
-                    height: "10px",
-                    borderRadius: "50%",
-                    color: "black",
-                    textAlign: "center",
-                    fontSize: "8px",
-                    padding: "5px",
-                  }}
-                >
-                  Idę biegać
-                </div>
+              <div>
+                <IconContainer>
+                  <BicycleIcon />
+                </IconContainer>
               </div>
-            </OverlayView>
-          </GoogleMap>
-        </LoadScript>
+            </div>
+          </OverlayView>
+          <OverlayView
+            position={otherUserPosition}
+            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+          >
+            <div
+              style={{
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <div>
+                <IconContainer>
+                  <ExcersiseIcon />
+                </IconContainer>
+              </div>
+            </div>
+          </OverlayView>
+        </GoogleMap>
       </div>
     </>
+  ) : (
+    <></>
   );
 };
