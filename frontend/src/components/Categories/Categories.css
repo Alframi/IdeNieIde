@@ -1,15 +1,42 @@
-.button-list {
-  padding: 50px;
-  border: 2px solid orange;
-}
-
-li {
+.container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 50px;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 20px 0;
+}
+
+.w-button {
+  width: 100px;
+  height: 100px;
+}
+
+.button-list {
+  display: flex;
+}
+
+.button-item {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .c-button {
-  background-color: blue;
+  background-color: red;
+  width: 100%;
+  font-size: 30px;
+  padding: 20px 0;
+}
+
+@media (min-width: 320px) {
+  .container {
+    max-width: 768px;
+  }
 }

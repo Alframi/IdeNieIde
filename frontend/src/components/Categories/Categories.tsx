@@ -3,13 +3,28 @@ import "./Categories.css";
 
 export const Categories: React.FC = () => {
   return (
-    <ul className="button-list">
-      <li>
-        <Button className="c-button" label="Bieganie" />
-        <Button className="c-button" label="Pływanie" />
-        <Button className="c-button" label="Jazda konna" />
-        <Button className="c-button" label="Bombel spacer" />
-      </li>
-    </ul>
+    <div className="container">
+      <div className="button-wrapper">
+        <Button className="w-button" label="Mapa" />
+        <Button className="w-button" label="Lista" />
+      </div>
+      <ul className="button-item">
+        <li className="button-list">
+          <Button className="c-button" label="Bieganie" />
+        </li>
+        <li className="button-list">
+          <Button className="c-button" label="Pływanie" />
+        </li>
+        <li className="button-list">
+          <Button className="c-button" label="Jazda konna" />
+        </li>
+        <li className="button-list">
+          <Button className="c-button" label="Bombel spacer" />
+        </li>
+        <li className="button-list">
+          <Button className="c-button" label="Jazda rowerem" />
+        </li>
+      </ul>
+    </div>
   );
 };
