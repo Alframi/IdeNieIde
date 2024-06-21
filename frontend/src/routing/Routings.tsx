@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 
 const Test = React.lazy(() => import("../pages/Test"));
-const Categories = React.lazy(() => import("../pages/ModalCategories"));
+const Categories = React.lazy(() => import("../pages/CategoriesPage"));
 
 export const router = createBrowserRouter([
   {

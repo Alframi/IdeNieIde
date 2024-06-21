@@ -1,0 +1,15 @@
+.button-list {
+  padding: 50px;
+  border: 2px solid orange;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
+
+.c-button {
+  background-color: blue;
+}
