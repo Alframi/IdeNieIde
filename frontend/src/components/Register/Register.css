@@ -1,0 +1,14 @@
+.container {
+  min-width: 320px;
+  max-width: 768px;
+  background-color: white;
+}
+
+.input-label {
+  color: black;
+}
+
+.input-wrapper {
+  display: flex;
+  justify-content: center;
+}
