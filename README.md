@@ -1,2 +1,2 @@
-# hack4change-ide
+# IdeNieIde - hack4change
 Idę albo nie idę
