@@ -1,10 +1,14 @@
-.container {
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   min-width: 320px;
   max-width: 768px;
   background-color: white;
-  border: 1px solid red;
+  height: 100vh;
 }
+
 h1 {
   margin: 0 auto 30px;
 }
@@ -15,7 +19,6 @@ h1 {
   margin: 0 auto;
   max-width: 300px;
   gap: 15px;
-  padding: 100px 0;
   transition: opacity 0.5s ease;
 }
 
@@ -72,4 +75,10 @@ h1 {
 .input-wrapper {
   display: flex;
   justify-content: center;
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
 }
