@@ -3,14 +3,16 @@
   align-items: center;
 }
 
-.termbox .acceptance-line p {
+.termbox .acceptance-line span {
   margin: 0;
   margin-left: 0.5em;
+  font-size: 12px;
 }
 
 .termbox .p-link {
   margin-left: 0.5em;
   color: rgb(114, 3, 219);
+  font-size: 12px;
 }
 
 .termbox .p-link:hover {
