@@ -24,7 +24,6 @@ export const Modal: React.FC<{ visible: boolean; onHide: () => void }> = ({
     { name: "Idę na rolki" },
     { name: "Idę na narty" },
     { name: "Idę na spacer z przyjaciółmi" },
-    { name: "Idę na kawę" },
     { name: "Idę na piknik" },
     { name: "Idę na koncert" },
     { name: "Idę na warsztaty" },
@@ -108,7 +107,7 @@ export const Modal: React.FC<{ visible: boolean; onHide: () => void }> = ({
           filter
           value={selectedCategories}
           onChange={(e) => setSelectedCategories(e.value)}
-          options={categories}
+          options={sortedCategories}
           optionLabel="name"
           className="w-full md:w-14rem"
           multiple
