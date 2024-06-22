@@ -58,6 +58,9 @@ li {
 .button-icon {
   width: 70px;
   height: 70px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .button-list {
