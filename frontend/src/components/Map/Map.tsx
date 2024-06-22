@@ -32,6 +32,7 @@ const mapStyles = [
 
 export const MapComponent = () => {
   const [currentPosition, setCurrentPosition] = useState(defaultCenter);
+  const [userCategory, setUserCategory] = useState("Excersise");
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
   const { isLoaded } = useJsApiLoader({
@@ -40,29 +41,24 @@ export const MapComponent = () => {
   });
 
   useEffect(() => {
-    // Sprawdza, czy przeglądarka obsługuje API geolokalizacji
     if (navigator.geolocation) {
       const watchId = navigator.geolocation.watchPosition(
         (position) => {
-          // Sukces: aktualizuje stan z bieżącą pozycją użytkownika
           setCurrentPosition({
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           });
         },
         (error) => {
-          // Błąd: wyświetla komunikat w konsoli
           console.error("Error fetching the geolocation: ", error);
         },
         {
-          // Opcjonalne ustawienia
-          enableHighAccuracy: true, // Używa GPS, jeśli dostępny
-          timeout: 10000, // Czas oczekiwania na odpowiedź (w ms)
-          maximumAge: 0, // Nie używaj zbuforowanych danych
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0,
         }
       );
 
-      // Clean up the watcher on component unmount
       return () => {
         navigator.geolocation.clearWatch(watchId);
       };
@@ -70,6 +66,18 @@ export const MapComponent = () => {
       console.error("Geolocation is not supported by this browser.");
     }
   }, []);
+
+  const IconRender = (userCategory: string) => {
+    switch (userCategory) {
+      case "Bicycle":
+        return <BicycleIcon />;
+      case "Excersise":
+        return <ExcersiseIcon />;
+
+      default:
+        return null;
+    }
+  };
 
   return isLoaded ? (
     <>
@@ -87,7 +95,13 @@ export const MapComponent = () => {
           mapContainerStyle={containerStyle}
           center={currentPosition}
           zoom={15}
-          options={{ styles: mapStyles }}
+          options={{
+            styles: mapStyles,
+            mapTypeControl: false,
+            fullscreenControl: false,
+            zoomControl: false,
+            streetViewControl: false,
+          }}
         >
           <OverlayView
             position={currentPosition}
@@ -101,9 +115,11 @@ export const MapComponent = () => {
               }}
             >
               <div>
-                <IconContainer>
-                  <BicycleIcon />
-                </IconContainer>
+                {userCategory ? (
+                  <IconContainer>{IconRender(userCategory)}</IconContainer>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
           </OverlayView>
