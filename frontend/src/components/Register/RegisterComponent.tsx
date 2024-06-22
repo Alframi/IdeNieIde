@@ -40,62 +40,65 @@ const RegisterComponent: React.FC = () => {
   };
 
   return (
-    <div className="container">
-      <img src={logo} alt="Logo" className="logo" />
-      <div className="register-section">
-        <h1>Zarejestruj się</h1>
-        <p className="input-label">Nazwa użytkownika</p>
-        <InputText value={nick} onChange={(e) => setNick(e.target.value)} />
-        <p className="input-label">Numer telefonu</p>
-        <InputMask
-          className="register-phone"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          mask="999-999-999"
-          placeholder="999-999-999"
-        />
-        <br />
-         <Termbox onAcceptChange={setTermsAccepted} />
-        <Button
-          className="register-button"
-          label="Zarejestruj"
-          icon="pi pi-check"
-          loading={loading}
-          onClick={load}
-        />
-      </div>
+    <>
+      <div className="container">
+        <img src={logo} alt="Logo" className="logo" />
+        <div className="register-section">
+          <h1>Zarejestruj się</h1>
+          <p className="input-label">Nazwa użytkownika</p>
+          <InputText value={nick} onChange={(e) => setNick(e.target.value)} />
+          <p className="input-label">Numer telefonu</p>
+          <InputMask
+            className="register-phone"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            mask="999-999-999"
+            placeholder="999-999-999"
+          />
+          <br />
+          <Termbox onAcceptChange={setTermsAccepted} />
+          <Button
+            className="register-button"
+            label="Zarejestruj"
+            icon="pi pi-check"
+            loading={loading}
+            onClick={load}
+            disabled={!termsAccepted} // Disable button if terms are not accepted
+          />
+        </div>
 
-      <div className={`auth-section ${isAuthVisible ? "visible" : ""}`}>
-        <Button
-          className="close-button"
-          icon="pi pi-times"
-          rounded
-          text
-          raised
-          severity="danger"
-          aria-label="Cancel"
-          onClick={handleClose}
-        />
+        <div className={`auth-section ${isAuthVisible ? "visible" : ""}`}>
+          <Button
+            className="close-button"
+            icon="pi pi-times"
+            rounded
+            text
+            raised
+            severity="danger"
+            aria-label="Cancel"
+            onClick={handleClose}
+          />
 
-        <p className="auth-label">W celu uwierzytelnienia, wpisz kod SMS</p>
+          <p className="auth-label">W celu uwierzytelnienia, wpisz kod SMS</p>
 
-        <InputOtp
-          value={token}
-          length={6}
-          onChange={(e) => setTokens(e.value)}
-        />
-        <Button
-          className="auth-button"
-          label="IDĘ"
-          loading={loading}
-          onClick={handleHomePage}
-        />
+          <InputOtp
+            value={token}
+            length={6}
+            onChange={(e) => setTokens(e.value)}
+          />
+          <Button
+            className="auth-button"
+            label="IDĘ"
+            loading={loading}
+            onClick={handleHomePage}
+          />
 
-        <Button
-          label="Wyślij ponownie"
-          link
-          onClick={() => window.open("https://chatgpt.com/", "_blank")}
-        />
+          <Button
+            label="Wyślij ponownie"
+            link
+            onClick={() => window.open("https://chatgpt.com/", "_blank")}
+          />
+        </div>
       </div>
     </>
   );
