@@ -42,12 +42,14 @@ export const WalkIcon = styled(Walk)`
   left: 18%;
 `;
 
-export const IconContainer = styled.div`
+export const IconContainer = styled.button`
   background-color: #ffcd56;
   width: 25px;
   height: 25px;
   border-radius: 50%;
   position: relative;
+  cursor: pointer;
+  border: none;
 `;
 
 export const IconContainer2 = styled(IconContainer)`
