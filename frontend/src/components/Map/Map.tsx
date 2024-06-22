@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, OverlayView } from "@react-google-maps/api";
 import { Categories } from "../Categories/Categories";
+import { BicycleIcon, ExcersiseIcon, IconContainer } from "./Map.styled";
 
 import "./Map.css";
 
@@ -97,9 +98,17 @@ export const MapComponent = () => {
   const IconRender = (userCategory: string) => {
     switch (userCategory) {
       case "Bicycle":
-        return <BicycleIcon />;
+        return (
+          <IconContainer>
+            <BicycleIcon />
+          </IconContainer>
+        );
       case "Excersise":
-        return <ExcersiseIcon />;
+        return (
+          <IconContainer>
+            <ExcersiseIcon />
+          </IconContainer>
+        );
 
       default:
         return null;
@@ -127,22 +136,44 @@ export const MapComponent = () => {
               mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
             >
               <div className="overlay-view-container">
-                {/* <div>
-                  <IconContainer>
-                    <BicycleIcon />
-                  </IconContainer>
-                </div> */}
+                <div>
+                  {userCategory ? <>{IconRender(userCategory)}</> : <></>}
+                </div>
               </div>
             </OverlayView>
             <OverlayView
               position={user1Position}
               mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
             >
+              {/* <div className="overlay-view-container"> */}
+              <div>
+                <IconContainer>
+                  <ExcersiseIcon />
+                </IconContainer>
+              </div>
+              {/* </div> */}
+            </OverlayView>
+            <OverlayView
+              position={user2Position}
+              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+            >
               <div className="overlay-view-container">
                 <div>
-                  {/* <IconContainer>
+                  <IconContainer>
                     <ExcersiseIcon />
-                  </IconContainer> */}
+                  </IconContainer>
+                </div>
+              </div>
+            </OverlayView>
+            <OverlayView
+              position={user3Position}
+              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+            >
+              <div className="overlay-view-container">
+                <div>
+                  <IconContainer>
+                    <ExcersiseIcon />
+                  </IconContainer>
                 </div>
               </div>
             </OverlayView>
