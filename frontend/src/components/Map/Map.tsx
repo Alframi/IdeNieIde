@@ -79,7 +79,7 @@ const mapStyles = [
 export const MapComponent = () => {
   const [currentPosition, setCurrentPosition] = useState(defaultCenter);
   const op = useRef(null);
-  const [userCategory, setUserCategory] = useState("Excercise");
+  const [userCategory, setUserCategory] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
