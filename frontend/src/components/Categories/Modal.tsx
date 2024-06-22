@@ -71,8 +71,7 @@ export const Modal: React.FC = () => {
         confirmDialog({
           message: "Możesz wybrać maksymalnie 5 kategorii",
           icon: "pi pi-info-circle",
-          acceptLabel: "Ok",
-          accept: () => {},
+          footer: <p></p>,
         });
         return prevSelected;
       }
