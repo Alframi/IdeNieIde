@@ -1,0 +1,53 @@
+.listbox-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.5em;
+}
+
+.item-name {
+  flex-grow: 1;
+}
+
+.item-icon {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.item-icon.selected {
+  color: gold;
+}
+
+.button-list {
+  padding: 50px;
+  border: 2px solid orange;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
+
+.c-button {
+  background-color: blue;
+}
+
+.p-listbox-item.p-highlight {
+  color: black;
+  background-color: #79e1a6;
+}
+
+.p-listbox-item {
+  margin-bottom: 3px;
+}
+
+.p-listbox .p-listbox-list .p-listbox-item {
+  pointer-events: none;
+}
+
+.item-icon {
+  pointer-events: auto;
+}
