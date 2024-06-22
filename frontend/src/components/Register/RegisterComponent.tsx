@@ -6,6 +6,8 @@ import { InputOtp } from "primereact/inputotp";
 import { InputMask } from "primereact/inputmask";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
+import { Termbox } from "./Termbox";
+import logo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 
 const RegisterComponent: React.FC = () => {
@@ -14,6 +16,7 @@ const RegisterComponent: React.FC = () => {
   const [nick, setNick] = useState<string | undefined>();
   const [loading, setLoading] = useState(false);
   const [isAuthVisible, setIsAuthVisible] = useState(false);
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
   const navigate = useNavigate();
 
@@ -37,7 +40,8 @@ const RegisterComponent: React.FC = () => {
   };
 
   return (
-    <div className="register-container">
+    <div className="container">
+      <img src={logo} alt="Logo" className="logo" />
       <div className="register-section">
         <h1>Zarejestruj się</h1>
         <p className="input-label">Nazwa użytkownika</p>
@@ -50,6 +54,8 @@ const RegisterComponent: React.FC = () => {
           mask="999-999-999"
           placeholder="999-999-999"
         />
+        <br />
+         <Termbox onAcceptChange={setTermsAccepted} />
         <Button
           className="register-button"
           label="Zarejestruj"
@@ -91,7 +97,7 @@ const RegisterComponent: React.FC = () => {
           onClick={() => window.open("https://chatgpt.com/", "_blank")}
         />
       </div>
-    </div>
+    </>
   );
 };
 
