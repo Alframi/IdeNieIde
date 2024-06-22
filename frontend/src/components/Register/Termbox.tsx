@@ -172,17 +172,22 @@ export const Termbox: React.FC<{
           checked={accepted}
           onChange={handleAcceptChange}
         />
-        <p>
-          Akceptuję{" "}
+        <span
+          style={{
+            marginLeft: "10px",
+          }}
+        >
+          {" "}
+          Akceptuję
           <Button className="p-link" onClick={() => setTermsVisible(true)}>
             Warunki korzystania
           </Button>{" "}
-          oraz{" "}
+          oraz
           <Button className="p-link" onClick={() => setPrivacyVisible(true)}>
             Politykę prywatności
           </Button>
           .
-        </p>
+        </span>
       </div>
 
       <Dialog
