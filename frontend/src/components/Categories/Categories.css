@@ -7,12 +7,12 @@
 .button-wrapper {
   display: flex;
   justify-content: space-between;
-  padding: 50px 20px 0;
+  padding: 50px 30px 0;
 }
 
-.w-button {
-  width: 100px;
-  height: 100px;
+.button-icon {
+  width: 70px;
+  height: 70px;
 }
 
 .button-list {
@@ -29,7 +29,7 @@
 }
 
 .c-button {
-  background-color: red;
+  background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
   font-size: 30px;
   padding: 20px 0;
