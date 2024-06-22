@@ -37,6 +37,16 @@ export const Modal: React.FC = () => {
     { name: "Idę na wolontariat" },
   ];
 
+  const sortCategories = (categories, selectedItems) => {
+    return categories.slice().sort((a, b) => {
+      const aSelected = selectedItems.some((item) => item.name === a.name);
+      const bSelected = selectedItems.some((item) => item.name === b.name);
+      return bSelected - aSelected;
+    });
+  };
+
+  const sortedCategories = sortCategories(categories, selectedItems);
+
   const itemTemplate = (option) => {
     const isSelected = selectedItems.some((item) => item.name === option.name);
     return (
@@ -105,7 +115,7 @@ export const Modal: React.FC = () => {
             filter
             value={selectedCategories}
             onChange={(e) => setSelectedCategories(e.value)}
-            options={categories}
+            options={sortedCategories}
             optionLabel="name"
             className="w-full md:w-14rem"
             multiple
