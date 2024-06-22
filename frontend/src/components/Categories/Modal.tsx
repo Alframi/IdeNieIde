@@ -5,8 +5,10 @@ import { ListBox } from "primereact/listbox";
 import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 import { useState } from "react";
 
-export const Modal: React.FC = () => {
-  const [visible, setVisible] = useState(false);
+export const Modal: React.FC<{ visible: boolean; onHide: () => void }> = ({
+  visible,
+  onHide,
+}) => {
   const [selectedCategories, setSelectedCategories] = useState<any[]>([]);
   const [selectedItems, setSelectedItems] = useState<any[]>([]);
 
@@ -91,39 +93,28 @@ export const Modal: React.FC = () => {
 
   return (
     <>
-      <div className="card flex justify-content-center">
-        <Button
-          label="Show"
-          icon="pi pi-external-link"
-          onClick={() => setVisible(true)}
+      <Dialog
+        header="Lista kategorii"
+        visible={visible}
+        style={{
+          width: "100vw",
+          height: "100vh",
+          maxHeight: "100%",
+        }}
+        onHide={onHide}
+      >
+        <p className="m-0">Dodaj do ulubionych (max 5)</p>
+        <ListBox
+          filter
+          value={selectedCategories}
+          onChange={(e) => setSelectedCategories(e.value)}
+          options={categories}
+          optionLabel="name"
+          className="w-full md:w-14rem"
+          multiple
+          itemTemplate={itemTemplate}
         />
-        <Dialog
-          header="Lista kategorii"
-          visible={visible}
-          style={{
-            width: "100vw",
-            height: "100vh",
-            maxHeight: "100%",
-          }}
-          onHide={() => {
-            if (!visible) return;
-            setVisible(false);
-          }}
-        >
-          <p className="m-0">Dodaj do ulubionych (max 5)</p>
-          <ListBox
-            filter
-            value={selectedCategories}
-            onChange={(e) => setSelectedCategories(e.value)}
-            options={sortedCategories}
-            optionLabel="name"
-            className="w-full md:w-14rem"
-            multiple
-            itemTemplate={itemTemplate}
-          />
-        </Dialog>
-      </div>
-
+      </Dialog>
       <ConfirmDialog />
     </>
   );
