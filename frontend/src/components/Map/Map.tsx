@@ -1,6 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, OverlayView } from "@react-google-maps/api";
-import { BicycleIcon, IconContainer, ExcersiseIcon } from "./Map.styled";
+import {
+  ExcersiseIcon,
+  WalkWithDogIcon,
+  BicycleIcon,
+  RunIcon,
+  WalkIcon,
+  IconContainer,
+  IconContainer2,
+  IconContainer3,
+  IconContainer4,
+  IconContainer5,
+} from "./Map.styled";
+
+const colors = [
+  "#FF6384",
+  "#FF9F40",
+  "#FFCD56",
+  "#4BC0C0",
+  "#36A2EB",
+  "#9966FF",
+  "#C9CBCF",
+  "#FF69B4",
+  "#D2F53C",
+  "#5A9BD4",
+  "#28A745",
+  "#4972ff",
+];
 
 const containerStyle = {
   width: "390px",
@@ -8,13 +34,38 @@ const containerStyle = {
 };
 
 const defaultCenter = {
-  lat: 54.3486938,
-  lng: 18.5990675,
+  lat: 54.35451,
+  lng: 18.593777,
 };
 
-const otherUserPosition = {
+const user1Position = {
   lat: 54.3497939,
   lng: 18.5970676,
+};
+
+const user2Position = {
+  lat: 54.3529645,
+  lng: 18.6071798,
+};
+
+const user3Position = {
+  lat: 54.3575645,
+  lng: 18.5999198,
+};
+
+const user4Position = {
+  lat: 54.3427939,
+  lng: 18.5999198,
+};
+
+const user5Position = {
+  lat: 54.3477939,
+  lng: 18.5910671,
+};
+
+const user6Position = {
+  lat: 54.3419939,
+  lng: 18.5919676,
 };
 
 const mapStyles = [
@@ -90,7 +141,62 @@ export const MapComponent = () => {
           options={{ styles: mapStyles }}
         >
           <OverlayView
-            position={currentPosition}
+            position={user1Position}
+            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+          >
+            <div
+              className="icon-wrapper"
+              style={{
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <div>
+                <IconContainer>
+                  <BicycleIcon />
+                </IconContainer>
+              </div>
+            </div>
+          </OverlayView>
+          <OverlayView
+            position={user2Position}
+            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+          >
+            <div
+              style={{
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <div>
+                <IconContainer2>
+                  <ExcersiseIcon />
+                </IconContainer2>
+              </div>
+            </div>
+          </OverlayView>
+          <OverlayView
+            position={user3Position}
+            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+          >
+            <div
+              style={{
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <div>
+                <IconContainer2>
+                  <ExcersiseIcon />
+                </IconContainer2>
+              </div>
+            </div>
+          </OverlayView>
+          <OverlayView
+            position={user4Position}
             mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
           >
             <div
@@ -108,7 +214,7 @@ export const MapComponent = () => {
             </div>
           </OverlayView>
           <OverlayView
-            position={otherUserPosition}
+            position={user5Position}
             mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
           >
             <div
@@ -119,9 +225,45 @@ export const MapComponent = () => {
               }}
             >
               <div>
-                <IconContainer>
-                  <ExcersiseIcon />
-                </IconContainer>
+                <IconContainer3>
+                  <RunIcon />
+                </IconContainer3>
+              </div>
+            </div>
+          </OverlayView>
+          <OverlayView
+            position={user6Position}
+            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+          >
+            <div
+              style={{
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <div>
+                <IconContainer4>
+                  <WalkWithDogIcon />
+                </IconContainer4>
+              </div>
+            </div>
+          </OverlayView>
+          <OverlayView
+            position={currentPosition}
+            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+          >
+            <div
+              style={{
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <div>
+                <IconContainer5>
+                  <WalkIcon />
+                </IconContainer5>
               </div>
             </div>
           </OverlayView>
