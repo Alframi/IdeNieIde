@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   GoogleMap,
   useJsApiLoader,
@@ -13,11 +13,13 @@ import {
   IconContainer4,
   IconContainer5,
   BicycleIcon,
-  ExcersiseIcon,
+  ExcerciseIcon,
   WalkWithDogIcon,
   RunIcon,
   WalkIcon,
+  StyledButton,
 } from "./Map.styled";
+import { OverlayPanel } from "primereact/overlaypanel";
 
 import "./Map.css";
 
@@ -77,6 +79,7 @@ const mapStyles = [
 export const MapComponent = () => {
   const [currentPosition, setCurrentPosition] = useState(defaultCenter);
   const [userCategory, setUserCategory] = useState("");
+  const op = useRef(null);
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
   const { isLoaded } = useJsApiLoader({
@@ -122,7 +125,7 @@ export const MapComponent = () => {
       case "Excersise":
         return (
           <IconContainer>
-            <ExcersiseIcon />
+            <ExcerciseIcon />
           </IconContainer>
         );
       case "WalkWithDog":
@@ -146,6 +149,11 @@ export const MapComponent = () => {
       default:
         return null;
     }
+  };
+
+  const handleIconClick = (e, position) => {
+    setOverlayPosition(position);
+    op.current.toggle(e);
   };
 
   return isLoaded ? (
@@ -187,9 +195,9 @@ export const MapComponent = () => {
               position={user1Position}
               mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
             >
-              <div>
+              <div onClick={(e) => op.current.toggle(e)}>
                 <IconContainer2>
-                  <ExcersiseIcon />
+                  <ExcerciseIcon />
                 </IconContainer2>
               </div>
             </OverlayView>
@@ -197,7 +205,7 @@ export const MapComponent = () => {
               position={user2Position}
               mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
             >
-              <div>
+              <div onClick={(e) => op.current.toggle(e)}>
                 <IconContainer4>
                   <RunIcon />
                 </IconContainer4>
@@ -208,7 +216,7 @@ export const MapComponent = () => {
               mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
             >
               <div className="overlay-view-container">
-                <div>
+                <div onClick={(e) => op.current.toggle(e)}>
                   <IconContainer4>
                     <RunIcon />
                   </IconContainer4>
@@ -220,7 +228,7 @@ export const MapComponent = () => {
               mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
             >
               <div className="overlay-view-container">
-                <div>
+                <div onClick={(e) => op.current.toggle(e)}>
                   <IconContainer4>
                     <RunIcon />
                   </IconContainer4>
@@ -232,7 +240,7 @@ export const MapComponent = () => {
               mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
             >
               <div className="overlay-view-container">
-                <div>
+                <div onClick={(e) => op.current.toggle(e)}>
                   <IconContainer>
                     <BicycleIcon />
                   </IconContainer>
@@ -244,13 +252,22 @@ export const MapComponent = () => {
               mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
             >
               <div className="overlay-view-container">
-                <div>
+                <div onClick={(e) => op.current.toggle(e)}>
                   <IconContainer3>
                     <WalkWithDogIcon />
                   </IconContainer3>
                 </div>
               </div>
             </OverlayView>
+            <div className="card flex justify-content-center custom">
+              <OverlayPanel ref={op} style={{ padding: "5px" }}>
+                <StyledButton
+                  type="button"
+                  label="Dołącz"
+                  onClick={(e) => op.current.toggle(e)}
+                />
+              </OverlayPanel>
+            </div>
           </GoogleMap>
           {/* <div className="modal-container">
             <Categories />

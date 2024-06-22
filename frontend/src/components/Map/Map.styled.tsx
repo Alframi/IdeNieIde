@@ -1,6 +1,6 @@
 import styled from "styled-components";
-
-import { Bicycle, Excersise, WalkWithDog, Run, Walk } from "../../assets/Icons";
+import { Bicycle, Excercise, WalkWithDog, Run, Walk } from "../../assets/Icons";
+import { Button } from "primereact/button";
 
 export const BicycleIcon = styled(Bicycle)`
   height: 15px;
@@ -10,7 +10,7 @@ export const BicycleIcon = styled(Bicycle)`
   left: 18%;
 `;
 
-export const ExcersiseIcon = styled(Excersise)`
+export const ExcerciseIcon = styled(Excercise)`
   height: 15px;
   width: 15px;
   position: absolute;
@@ -66,4 +66,10 @@ export const IconContainer4 = styled(IconContainer)`
 
 export const IconContainer5 = styled(IconContainer)`
   background-color: #36a2eb;
+`;
+
+export const StyledButton = styled(Button)`
+  background-color: #4f46e5;
+  padding: 4px;
+  font-size: 14px;
 `;

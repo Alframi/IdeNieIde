@@ -23,3 +23,7 @@
   width: 100%;
   height: 100%;
 }
+
+.p-overlaypanel-content {
+  padding: 5px;
+}

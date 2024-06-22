@@ -69,7 +69,7 @@ export const Bicycle: React.FC = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export const Excersise: React.FC = (props: SVGProps<SVGSVGElement>) => (
+export const Excercise: React.FC = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width="800px"
     height="800px"
