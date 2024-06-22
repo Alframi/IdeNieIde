@@ -1,10 +1,17 @@
 import { Button } from "primereact/button";
+import { ConfirmDialog } from "primereact/confirmdialog";
+import { useState } from "react";
+import { Modal } from "./Modal";
 import "./Categories.css";
 import mapIcon from "../../assets/svg/map.svg";
 import listIcon from "../../assets/svg/list.svg";
 
 export const Categories: React.FC = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
+    <>
+    <Modal visible={modalVisible} onHide={() => setModalVisible(false)} />
     <div className="container">
       <div className="button-wrapper">
         <div className="button-icon">
@@ -32,5 +39,6 @@ export const Categories: React.FC = () => {
         </li>
       </ul>
     </div>
+    </>
   );
 };
