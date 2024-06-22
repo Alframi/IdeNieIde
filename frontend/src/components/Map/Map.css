@@ -25,6 +25,10 @@
   height: 100%;
 }
 
+.p-overlaypanel-content {
+  padding: 5px;
+}
+
 .open-modal-button {
   width: 63px;
   height: 63px;
