@@ -8,7 +8,6 @@ import {
 import { Categories } from "../Categories/Categories";
 import {
   IconContainer,
-  IconContainer0,
   IconContainer2,
   IconContainer3,
   IconContainer4,
