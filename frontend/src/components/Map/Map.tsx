@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, OverlayView } from "@react-google-maps/api";
-import { BicycleIcon, IconContainer, ExcersiseIcon } from "./Map.styled";
+import { Categories } from "../Categories/Categories";
+
+import "./Map.css";
 
 const containerStyle = {
-  width: "390px",
-  height: "70vh",
+  width: "100%",
+  height: "100%",
 };
 
 const defaultCenter = {
@@ -73,59 +75,49 @@ export const MapComponent = () => {
 
   return isLoaded ? (
     <>
-      <div
-        style={{
-          width: "100vw",
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "10px",
-        }}
-      >
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={currentPosition}
-          zoom={15}
-          options={{ styles: mapStyles }}
-        >
-          <OverlayView
-            position={currentPosition}
-            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+      <div className="fullscreen-center">
+        <div className="map-container">
+          <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={currentPosition}
+            zoom={15}
+            options={{
+              styles: mapStyles,
+              mapTypeControl: false,
+              fullscreenControl: false,
+              zoomControl: false,
+              streetViewControl: false,
+            }}
           >
-            <div
-              style={{
-                position: "relative",
-                display: "flex",
-                alignItems: "center",
-              }}
+            <OverlayView
+              position={currentPosition}
+              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
             >
-              <div>
-                <IconContainer>
-                  <BicycleIcon />
-                </IconContainer>
+              <div className="overlay-view-container">
+                {/* <div>
+                  <IconContainer>
+                    <BicycleIcon />
+                  </IconContainer>
+                </div> */}
               </div>
-            </div>
-          </OverlayView>
-          <OverlayView
-            position={otherUserPosition}
-            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-          >
-            <div
-              style={{
-                position: "relative",
-                display: "flex",
-                alignItems: "center",
-              }}
+            </OverlayView>
+            <OverlayView
+              position={otherUserPosition}
+              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
             >
-              <div>
-                <IconContainer>
-                  <ExcersiseIcon />
-                </IconContainer>
+              <div className="overlay-view-container">
+                <div>
+                  {/* <IconContainer>
+                    <ExcersiseIcon />
+                  </IconContainer> */}
+                </div>
               </div>
-            </div>
-          </OverlayView>
-        </GoogleMap>
+            </OverlayView>
+          </GoogleMap>
+          <div className="modal-container">
+            <Categories />
+          </div>
+        </div>
       </div>
     </>
   ) : (
