@@ -19,20 +19,11 @@
   color: gold;
 }
 
-.button-list {
-  padding: 50px;
-  border: 2px solid orange;
-}
-
 li {
   display: flex;
   flex-direction: column;
   gap: 10px;
   list-style: none;
-}
-
-.c-button {
-  background-color: blue;
 }
 
 .p-listbox-item.p-highlight {
@@ -50,4 +41,47 @@ li {
 
 .item-icon {
   pointer-events: auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 30px 0;
+}
+
+.button-icon {
+  width: 70px;
+  height: 70px;
+}
+
+.button-list {
+  display: flex;
+}
+
+.button-item {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.c-button {
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  font-size: 30px;
+  padding: 20px 0;
+}
+
+@media (min-width: 320px) {
+  .container {
+    max-width: 768px;
+  }
 }
