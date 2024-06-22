@@ -11,6 +11,7 @@ export const Modal: React.FC = () => {
   const [selectedItems, setSelectedItems] = useState<any[]>([]);
 
   const categories = [
+    { name: "Idę na kawę" },
     { name: "Idę na rower" },
     { name: "Idę z dzieckiem na spacer" },
     { name: "Idę na jogę" },

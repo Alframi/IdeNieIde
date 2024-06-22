@@ -1,0 +1,24 @@
+.termbox .acceptance-line {
+  display: flex;
+  align-items: center;
+}
+
+.termbox .acceptance-line p {
+  margin: 0;
+  margin-left: 0.5em;
+}
+
+.termbox .p-link {
+  margin-left: 0.5em;
+  color: rgb(114, 3, 219);
+}
+
+.termbox .p-link:hover {
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 1em;
+}
