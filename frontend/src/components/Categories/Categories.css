@@ -87,6 +87,15 @@ li {
   padding: 20px 0;
 }
 
+.p-dialog .p-dialog-header {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
+.p-dialog .p-dialog-content:last-of-type {
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
 @media (min-width: 320px) {
   .container {
     max-width: 768px;

@@ -51,22 +51,27 @@ export const IconContainer = styled.button`
   position: relative;
   cursor: pointer;
   border: none;
+  box-sizing: border-box;
 `;
 
 export const IconContainer2 = styled(IconContainer)`
   background-color: #ff6384;
+  border: none;
 `;
 
 export const IconContainer3 = styled(IconContainer)`
   background-color: #28a745;
+  border: none;
 `;
 
 export const IconContainer4 = styled(IconContainer)`
   background-color: #9966ff;
+  border: none;
 `;
 
 export const IconContainer5 = styled(IconContainer)`
   background-color: #36a2eb;
+  border: none;
 `;
 
 export const StyledButton = styled(Button)`

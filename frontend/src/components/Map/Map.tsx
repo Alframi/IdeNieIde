@@ -119,33 +119,43 @@ export const MapComponent = () => {
     switch (userCategory) {
       case "Bicycle":
         return (
-          <IconContainer>
-            <BicycleIcon />
-          </IconContainer>
+          <div className="userContainer">
+            <IconContainer>
+              <BicycleIcon />
+            </IconContainer>
+          </div>
         );
       case "Excercise":
         return (
-          <IconContainer>
-            <ExcerciseIcon />
-          </IconContainer>
+          <div className="userContainer">
+            <IconContainer2>
+              <ExcerciseIcon />
+            </IconContainer2>
+          </div>
         );
       case "WalkWithDog":
         return (
-          <IconContainer>
-            <WalkWithDogIcon />
-          </IconContainer>
+          <div className="userContainer">
+            <IconContainer3>
+              <WalkWithDogIcon />
+            </IconContainer3>
+          </div>
         );
       case "Run":
         return (
-          <IconContainer>
-            <RunIcon />
-          </IconContainer>
+          <div className="userContainer">
+            <IconContainer4>
+              <RunIcon />
+            </IconContainer4>
+          </div>
         );
       case "Walk":
         return (
-          <IconContainer>
-            <WalkIcon />
-          </IconContainer>
+          <div className="userContainer">
+            <IconContainer5>
+              <WalkIcon />
+            </IconContainer5>
+          </div>
         );
       default:
         return null;
