@@ -41,7 +41,7 @@ const RegisterComponent: React.FC = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="register-container">
         <img src={logo} alt="Logo" className="logo" />
         <div className="register-section">
           <h1>Zarejestruj się</h1>
