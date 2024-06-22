@@ -76,7 +76,7 @@ const mapStyles = [
 
 export const MapComponent = () => {
   const [currentPosition, setCurrentPosition] = useState(defaultCenter);
-  const [userCategory, setUserCategory] = useState("Excersise");
+  const [userCategory, setUserCategory] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
@@ -155,6 +155,10 @@ export const MapComponent = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleStatusChange = (status: string) => {
+    setUserCategory(status);
   };
 
   return isLoaded ? (
@@ -274,7 +278,10 @@ export const MapComponent = () => {
           <div className="modal">
             <div className="modal-content">
               <span className="close-button" onClick={closeModal}></span>
-              <Categories closeModal={closeModal} />
+              <Categories
+                closeModal={closeModal}
+                onStatusChange={handleStatusChange}
+              />
             </div>
           </div>
         )}
