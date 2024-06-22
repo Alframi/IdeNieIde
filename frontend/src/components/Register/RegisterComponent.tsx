@@ -6,6 +6,7 @@ import { InputOtp } from "primereact/inputotp";
 import { InputMask } from "primereact/inputmask";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
+import { useNavigate } from "react-router-dom";
 
 const RegisterComponent: React.FC = () => {
   const [token, setTokens] = useState<string | number | undefined>();
@@ -13,6 +14,8 @@ const RegisterComponent: React.FC = () => {
   const [nick, setNick] = useState<string | undefined>();
   const [loading, setLoading] = useState(false);
   const [isAuthVisible, setIsAuthVisible] = useState(false);
+
+  const navigate = useNavigate();
 
   const load = () => {
     setLoading(true);
@@ -27,8 +30,14 @@ const RegisterComponent: React.FC = () => {
     setIsAuthVisible(false);
   };
 
+  const handleHomePage = () => {
+    setTimeout(() => {
+      navigate("/home");
+    }, 500);
+  };
+
   return (
-    <div className="container">
+    <div className="register-container">
       <div className="register-section">
         <h1>Zarejestruj się</h1>
         <p className="input-label">Nazwa użytkownika</p>
@@ -51,7 +60,18 @@ const RegisterComponent: React.FC = () => {
       </div>
 
       <div className={`auth-section ${isAuthVisible ? "visible" : ""}`}>
-        <p className="auth-label">W celu uwieżytelnienia, wpisz kod SMS</p>
+        <Button
+          className="close-button"
+          icon="pi pi-times"
+          rounded
+          text
+          raised
+          severity="danger"
+          aria-label="Cancel"
+          onClick={handleClose}
+        />
+
+        <p className="auth-label">W celu uwierzytelnienia, wpisz kod SMS</p>
 
         <InputOtp
           value={token}
@@ -62,7 +82,13 @@ const RegisterComponent: React.FC = () => {
           className="auth-button"
           label="IDĘ"
           loading={loading}
-          onClick={handleClose}
+          onClick={handleHomePage}
+        />
+
+        <Button
+          label="Wyślij ponownie"
+          link
+          onClick={() => window.open("https://chatgpt.com/", "_blank")}
         />
       </div>
     </div>
