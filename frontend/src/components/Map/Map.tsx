@@ -159,7 +159,7 @@ export const MapComponent = () => {
 
   return isLoaded ? (
     <>
-      <div className="fullscreen-center">
+      <div className="fullscreen-center ">
         <div className="map-container">
           <GoogleMap
             mapContainerStyle={containerStyle}
