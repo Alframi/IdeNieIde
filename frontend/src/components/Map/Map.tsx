@@ -1,7 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { GoogleMap, useJsApiLoader, OverlayView } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  useJsApiLoader,
+  OverlayView,
+  Circle,
+} from "@react-google-maps/api";
 import { Categories } from "../Categories/Categories";
-import { BicycleIcon, ExcersiseIcon, IconContainer } from "./Map.styled";
+import {
+  IconContainer,
+  IconContainer2,
+  IconContainer3,
+  IconContainer4,
+  IconContainer5,
+  BicycleIcon,
+  ExcersiseIcon,
+  WalkWithDogIcon,
+  RunIcon,
+  WalkIcon,
+} from "./Map.styled";
 
 import "./Map.css";
 
@@ -21,8 +37,8 @@ const user1Position = {
 };
 
 const user2Position = {
-  lat: 54.3529645,
-  lng: 18.6071798,
+  lat: 54.3569645,
+  lng: 18.5821798,
 };
 
 const user3Position = {
@@ -31,17 +47,17 @@ const user3Position = {
 };
 
 const user4Position = {
-  lat: 54.3427939,
-  lng: 18.5999198,
+  lat: 54.3527939,
+  lng: 18.5899198,
 };
 
 const user5Position = {
-  lat: 54.3477939,
+  lat: 54.3597939,
   lng: 18.5910671,
 };
 
 const user6Position = {
-  lat: 54.3419939,
+  lat: 54.3489939,
   lng: 18.5919676,
 };
 
@@ -60,7 +76,7 @@ const mapStyles = [
 
 export const MapComponent = () => {
   const [currentPosition, setCurrentPosition] = useState(defaultCenter);
-  const [userCategory, setUserCategory] = useState("Excersise");
+  const [userCategory, setUserCategory] = useState("");
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
   const { isLoaded } = useJsApiLoader({
@@ -68,32 +84,32 @@ export const MapComponent = () => {
     googleMapsApiKey: `${apiKey}`,
   });
 
-  useEffect(() => {
-    if (navigator.geolocation) {
-      const watchId = navigator.geolocation.watchPosition(
-        (position) => {
-          setCurrentPosition({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          });
-        },
-        (error) => {
-          console.error("Error fetching the geolocation: ", error);
-        },
-        {
-          enableHighAccuracy: true,
-          timeout: 10000,
-          maximumAge: 0,
-        }
-      );
+  // useEffect(() => {
+  //   if (navigator.geolocation) {
+  //     const watchId = navigator.geolocation.watchPosition(
+  //       (position) => {
+  //         setCurrentPosition({
+  //           lat: position.coords.latitude,
+  //           lng: position.coords.longitude,
+  //         });
+  //       },
+  //       (error) => {
+  //         console.error("Error fetching the geolocation: ", error);
+  //       },
+  //       {
+  //         enableHighAccuracy: true,
+  //         timeout: 10000,
+  //         maximumAge: 0,
+  //       }
+  //     );
 
-      return () => {
-        navigator.geolocation.clearWatch(watchId);
-      };
-    } else {
-      console.error("Geolocation is not supported by this browser.");
-    }
-  }, []);
+  //     return () => {
+  //       navigator.geolocation.clearWatch(watchId);
+  //     };
+  //   } else {
+  //     console.error("Geolocation is not supported by this browser.");
+  //   }
+  // }, []);
 
   const IconRender = (userCategory: string) => {
     switch (userCategory) {
@@ -109,7 +125,24 @@ export const MapComponent = () => {
             <ExcersiseIcon />
           </IconContainer>
         );
-
+      case "WalkWithDog":
+        return (
+          <IconContainer>
+            <WalkWithDogIcon />
+          </IconContainer>
+        );
+      case "Run":
+        return (
+          <IconContainer>
+            <RunIcon />
+          </IconContainer>
+        );
+      case "Walk":
+        return (
+          <IconContainer>
+            <WalkIcon />
+          </IconContainer>
+        );
       default:
         return null;
     }
@@ -122,7 +155,7 @@ export const MapComponent = () => {
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={currentPosition}
-            zoom={15}
+            zoom={14}
             options={{
               styles: mapStyles,
               mapTypeControl: false,
@@ -131,38 +164,43 @@ export const MapComponent = () => {
               streetViewControl: false,
             }}
           >
+            <Circle
+              center={currentPosition}
+              radius={1000}
+              options={{
+                fillColor: "lightblue",
+                fillOpacity: 0.5,
+                strokeColor: "lightblue",
+                strokeOpacity: 1,
+                strokeWeight: 1,
+              }}
+            />
             <OverlayView
               position={currentPosition}
               mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
             >
-              <div className="overlay-view-container">
-                <div>
-                  {userCategory ? <>{IconRender(userCategory)}</> : <></>}
-                </div>
+              <div>
+                {userCategory ? <>{IconRender(userCategory)}</> : <></>}
               </div>
             </OverlayView>
             <OverlayView
               position={user1Position}
               mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
             >
-              {/* <div className="overlay-view-container"> */}
               <div>
-                <IconContainer>
+                <IconContainer2>
                   <ExcersiseIcon />
-                </IconContainer>
+                </IconContainer2>
               </div>
-              {/* </div> */}
             </OverlayView>
             <OverlayView
               position={user2Position}
               mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
             >
-              <div className="overlay-view-container">
-                <div>
-                  <IconContainer>
-                    <ExcersiseIcon />
-                  </IconContainer>
-                </div>
+              <div>
+                <IconContainer4>
+                  <RunIcon />
+                </IconContainer4>
               </div>
             </OverlayView>
             <OverlayView
@@ -171,16 +209,52 @@ export const MapComponent = () => {
             >
               <div className="overlay-view-container">
                 <div>
+                  <IconContainer4>
+                    <RunIcon />
+                  </IconContainer4>
+                </div>
+              </div>
+            </OverlayView>
+            <OverlayView
+              position={user4Position}
+              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+            >
+              <div className="overlay-view-container">
+                <div>
+                  <IconContainer4>
+                    <RunIcon />
+                  </IconContainer4>
+                </div>
+              </div>
+            </OverlayView>
+            <OverlayView
+              position={user5Position}
+              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+            >
+              <div className="overlay-view-container">
+                <div>
                   <IconContainer>
-                    <ExcersiseIcon />
+                    <BicycleIcon />
                   </IconContainer>
                 </div>
               </div>
             </OverlayView>
+            <OverlayView
+              position={user6Position}
+              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+            >
+              <div className="overlay-view-container">
+                <div>
+                  <IconContainer3>
+                    <WalkWithDogIcon />
+                  </IconContainer3>
+                </div>
+              </div>
+            </OverlayView>
           </GoogleMap>
-          <div className="modal-container">
+          {/* <div className="modal-container">
             <Categories />
-          </div>
+          </div> */}
         </div>
       </div>
     </>
