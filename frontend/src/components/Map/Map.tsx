@@ -10,13 +10,38 @@ const containerStyle = {
 };
 
 const defaultCenter = {
-  lat: 54.3486938,
-  lng: 18.5990675,
+  lat: 54.35451,
+  lng: 18.593777,
 };
 
-const otherUserPosition = {
+const user1Position = {
   lat: 54.3497939,
   lng: 18.5970676,
+};
+
+const user2Position = {
+  lat: 54.3529645,
+  lng: 18.6071798,
+};
+
+const user3Position = {
+  lat: 54.3575645,
+  lng: 18.5999198,
+};
+
+const user4Position = {
+  lat: 54.3427939,
+  lng: 18.5999198,
+};
+
+const user5Position = {
+  lat: 54.3477939,
+  lng: 18.5910671,
+};
+
+const user6Position = {
+  lat: 54.3419939,
+  lng: 18.5919676,
 };
 
 const mapStyles = [
@@ -34,6 +59,7 @@ const mapStyles = [
 
 export const MapComponent = () => {
   const [currentPosition, setCurrentPosition] = useState(defaultCenter);
+  const [userCategory, setUserCategory] = useState("Excersise");
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
   const { isLoaded } = useJsApiLoader({
@@ -42,29 +68,24 @@ export const MapComponent = () => {
   });
 
   useEffect(() => {
-    // Sprawdza, czy przeglądarka obsługuje API geolokalizacji
     if (navigator.geolocation) {
       const watchId = navigator.geolocation.watchPosition(
         (position) => {
-          // Sukces: aktualizuje stan z bieżącą pozycją użytkownika
           setCurrentPosition({
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           });
         },
         (error) => {
-          // Błąd: wyświetla komunikat w konsoli
           console.error("Error fetching the geolocation: ", error);
         },
         {
-          // Opcjonalne ustawienia
-          enableHighAccuracy: true, // Używa GPS, jeśli dostępny
-          timeout: 10000, // Czas oczekiwania na odpowiedź (w ms)
-          maximumAge: 0, // Nie używaj zbuforowanych danych
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0,
         }
       );
 
-      // Clean up the watcher on component unmount
       return () => {
         navigator.geolocation.clearWatch(watchId);
       };
@@ -72,6 +93,18 @@ export const MapComponent = () => {
       console.error("Geolocation is not supported by this browser.");
     }
   }, []);
+
+  const IconRender = (userCategory: string) => {
+    switch (userCategory) {
+      case "Bicycle":
+        return <BicycleIcon />;
+      case "Excersise":
+        return <ExcersiseIcon />;
+
+      default:
+        return null;
+    }
+  };
 
   return isLoaded ? (
     <>
@@ -102,7 +135,7 @@ export const MapComponent = () => {
               </div>
             </OverlayView>
             <OverlayView
-              position={otherUserPosition}
+              position={user1Position}
               mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
             >
               <div className="overlay-view-container">
