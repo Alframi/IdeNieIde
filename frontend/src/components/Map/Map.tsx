@@ -18,7 +18,6 @@ import {
   RunIcon,
   WalkIcon,
 } from "./Map.styled";
-import { BicycleIcon, ExcersiseIcon, IconContainer } from "./Map.styled";
 import faceIcon from "../../assets/svg/face.svg";
 import "./Map.css";
 
