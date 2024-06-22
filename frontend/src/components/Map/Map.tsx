@@ -165,6 +165,10 @@ export const MapComponent = () => {
     setIsModalOpen(false);
   };
 
+  const handleStatusChange = (status: string) => {
+    setUserCategory(status);
+  };
+
   return isLoaded ? (
     <>
       <div className="fullscreen-center ">
@@ -291,7 +295,10 @@ export const MapComponent = () => {
           <div className="modal">
             <div className="modal-content">
               <span className="close-button" onClick={closeModal}></span>
-              <Categories closeModal={closeModal} />
+              <Categories
+                closeModal={closeModal}
+                onStatusChange={handleStatusChange}
+              />
             </div>
           </div>
         )}
