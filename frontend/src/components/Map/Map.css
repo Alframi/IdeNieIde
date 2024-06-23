@@ -79,6 +79,8 @@
   width: 80%;
   border-radius: 5px;
   position: relative;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 .iconSad {
