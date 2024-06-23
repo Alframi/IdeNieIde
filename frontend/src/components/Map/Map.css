@@ -62,3 +62,39 @@
   justify-content: center;
   align-items: center;
 }
+.w-iconSad {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 70px;
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+}
+
+.w-border-iconSad {
+  border: 2px solid black;
+  height: 40px;
+  width: 80%;
+  border-radius: 5px;
+  position: relative;
+}
+
+.iconSad {
+  width: 63px;
+  height: 63px;
+  z-index: 999;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translate(-50%, -50%); /* Center the element */
+}
+.w-border-text {
+  z-index: 999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 25px;
+}
