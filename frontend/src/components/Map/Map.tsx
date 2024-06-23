@@ -4,6 +4,7 @@ import {
   useJsApiLoader,
   OverlayView,
   Circle,
+  InfoWindow,
 } from "@react-google-maps/api";
 import { Categories } from "../Categories/Categories";
 import {
@@ -270,6 +271,7 @@ export const MapComponent = () => {
                 </div>
               </div>
             </OverlayView>
+
             <OverlayView
               position={user6Position}
               mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
@@ -282,8 +284,9 @@ export const MapComponent = () => {
                 </div>
               </div>
             </OverlayView>
+
             <div className="card flex justify-content-center custom">
-              <OverlayPanel ref={op} style={{ padding: "5px" }}>
+              <OverlayPanel ref={op}>
                 <StyledButton
                   type="button"
                   label="Dołącz"
