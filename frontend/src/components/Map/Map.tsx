@@ -22,6 +22,7 @@ import {
 } from "./Map.styled";
 import { OverlayPanel } from "primereact/overlaypanel";
 import faceIcon from "../../assets/svg/face.svg";
+import faceIconSad from "../../assets/svg/faceSad.svg";
 import "./Map.css";
 
 const containerStyle = {
@@ -315,6 +316,17 @@ export const MapComponent = () => {
             </div>
           </div>
         )}
+      </div>
+      <div className="w-iconSad">
+        <div className="w-border-iconSad">
+          <span className="w-border-text">Nie idę</span>
+          <img
+            src={faceIconSad}
+            alt="Map Icon"
+            className="iconSad"
+            onClick={openModal}
+          />
+        </div>
       </div>
     </>
   ) : (
