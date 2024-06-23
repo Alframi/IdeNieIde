@@ -177,8 +177,7 @@ export const Termbox: React.FC<{
             marginLeft: "10px",
           }}
         >
-          {" "}
-          Akceptuję
+          Akceptuję{" "}
           <Button className="p-link" onClick={() => setTermsVisible(true)}>
             Warunki korzystania
           </Button>{" "}

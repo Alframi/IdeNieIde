@@ -46,10 +46,14 @@ const RegisterComponent: React.FC = () => {
         <div className="register-section">
           <h1>Zarejestruj się</h1>
           <p className="input-label">Nazwa użytkownika</p>
-          <InputText value={nick} onChange={(e) => setNick(e.target.value)} />
+          <InputText
+            className="register-input"
+            value={nick}
+            onChange={(e) => setNick(e.target.value)}
+          />
           <p className="input-label">Numer telefonu</p>
           <InputMask
-            className="register-phone"
+            className="register-input"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             mask="999-999-999"
@@ -63,7 +67,7 @@ const RegisterComponent: React.FC = () => {
             icon="pi pi-check"
             loading={loading}
             onClick={load}
-            disabled={!termsAccepted} // Disable button if terms are not accepted
+            disabled={!termsAccepted}
           />
         </div>
 

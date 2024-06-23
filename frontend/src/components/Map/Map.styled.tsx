@@ -76,6 +76,7 @@ export const IconContainer5 = styled(IconContainer)`
 
 export const StyledButton = styled(Button)`
   background-color: #4f46e5;
-  padding: 4px;
+  padding: 8px;
   font-size: 14px;
+  border-radius: 6px;
 `;
