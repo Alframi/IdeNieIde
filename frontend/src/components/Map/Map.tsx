@@ -181,6 +181,10 @@ export const MapComponent = () => {
     setUserCategory(status);
   };
 
+  const handleResetStatus = () => {
+    setUserCategory("");
+  };
+
   return isLoaded ? (
     <>
       <div className="fullscreen-center ">
@@ -317,17 +321,22 @@ export const MapComponent = () => {
           </div>
         )}
       </div>
-      <div className="w-iconSad">
-        <div className="w-border-iconSad">
-          <span className="w-border-text">Nie idę</span>
-          <img
-            src={faceIconSad}
-            alt="Map Icon"
-            className="iconSad"
-            onClick={openModal}
-          />
+
+      {userCategory ? (
+        <div className="w-iconSad">
+          <button className="w-border-iconSad" onClick={handleResetStatus}>
+            <span className="w-border-text">Nie idę</span>
+            <img
+              src={faceIconSad}
+              alt="Map Icon"
+              className="iconSad"
+              onClick={openModal}
+            />
+          </button>
         </div>
-      </div>
+      ) : (
+        <></>
+      )}
     </>
   ) : (
     <></>
